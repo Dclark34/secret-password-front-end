@@ -16,11 +16,11 @@ function Row() {
   return (
     <>
     <section className='row'>
-    <div className='square'>1</div>
-    <div className='square'>2</div>
-    <div className='square'>3</div>
-    <div className='square'>4</div>
-    <div className='square'>5</div>
+    <div className='square'></div>
+    <div className='square'></div>
+    <div className='square'></div>
+    <div className='square'></div>
+    <div className='square'></div>
     </section>
     </>
   );
@@ -31,8 +31,7 @@ function Row() {
 
 
 export default function App() {
-
-    //test winning word
+  //test winning word
   const winningWord = "psych";
 
   // is there a winner state.
@@ -42,6 +41,14 @@ const [isWinner, setIsWinner] = useState(false);
   const [currentGuess, setCurrentGuess] = useState([]);
 
 
+  //event handler for user input
+const handleChange = (event) => {
+  let newLetter = event.target.value.split(''); //splits input by space between letters.
+  console.log(`You Typed the Letter ${newLetter}`)
+  const newGuessArray = newLetter; //pushes split letter into its own index in array.
+  console.log(newGuessArray);
+  setCurrentGuess(newGuessArray);//sets user input as an array. Will use this array to map to Board
+};
 
 
   return (
@@ -52,7 +59,16 @@ const [isWinner, setIsWinner] = useState(false);
 <section className='board'>
     <Row className='guess-1'/>
 </section>
-<section>
+<section className='user-input'>
+    <div className='user-input'>
+  <label htmlFor="currentGuess">Guess: </label>
+  <input 
+  id="currentGuess" 
+  name="currentGuess" 
+  maxLength={5}
+  type="text"  
+  onChange={handleChange} />
+</div>
 </section>
 </>
   );
