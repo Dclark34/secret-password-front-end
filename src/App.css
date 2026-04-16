@@ -15,7 +15,23 @@ body {
 }
 
 .square {
+    width: 160px;
+    height:80px;
     border: solid black 1px;
-    padding: 25px 30px;
+    padding: 25px;
     margin: 5px;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif; /*add a spy themed font here*/
+    font-size: 400%;
+}
+
+.title{
+    display:flex;
+    justify-content: center;
+}
+
+.keyboard {
+    display:flex;
+    justify-content: center;
 }

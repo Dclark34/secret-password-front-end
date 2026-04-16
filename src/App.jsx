@@ -1,7 +1,15 @@
 import { useState } from 'react'
-
 import './App.css'
 
+
+//board
+function Board() {
+  return (
+    <>
+    <Row />
+    </>
+  )
+}
 
 //row array
 function Row() {
@@ -19,21 +27,22 @@ function Row() {
 }
 
 
-//icebox: Interactive keyboard
-function Keyboard () {
-  return(
-    <button className='key'>This will be a keyboard eventually</button>
-  );
-};
 
 
 
+export default function App() {
+
+    //test winning word
+  const winningWord = "psych";
+
+  // is there a winner state.
+const [isWinner, setIsWinner] = useState(false);
+
+// state for user input
+  const [currentGuess, setCurrentGuess] = useState([]);
 
 
-export default function Board() {
 
-  //test winning word
-  const winningWord = "Start";
 
   return (
 <>
@@ -42,14 +51,8 @@ export default function Board() {
 </div>
 <section className='board'>
     <Row className='guess-1'/>
-    <Row className='guess-2'/>
-    <Row className='guess-3'/>
-    <Row className='guess-4'/>
-    <Row className='guess-5'/>
-    <Row className='guess-6'/>
 </section>
 <section>
-  <Keyboard />
 </section>
 </>
   );
