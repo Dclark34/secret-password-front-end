@@ -3,24 +3,25 @@ import './App.css'
 
 
 //board
-function Board() {
+function Board({ currentGuess }) {
   return (
     <>
-    <Row />
+    <Row className="guess-one" currentGuess={currentGuess}/>
     </>
   )
 }
 
 //row array
-function Row() {
+function Row({ currentGuess }) {
+  const squares = ['','','','',''];
+
+  //render a square div for each element in squares array. If a letter exists at currentGuess[index], place in square.
   return (
     <>
-    <section className='row'>
-    <div className='square'></div>
-    <div className='square'></div>
-    <div className='square'></div>
-    <div className='square'></div>
-    <div className='square'></div>
+    <section className='row'> 
+      {squares.map((square, index) =>
+      <div className='square' key={index}>{currentGuess[index]}</div>
+    )}
     </section>
     </>
   );
@@ -57,10 +58,10 @@ const handleChange = (event) => {
 <h1>SECRET PASSWORD</h1>
 </div>
 <section className='board'>
-    <Row className='guess-1'/>
+    <Board currentGuess={currentGuess}/>
 </section>
-<section className='user-input'>
-    <div className='user-input'>
+<section className='user-inpu-container'>
+  <div className='user-input'>
   <label htmlFor="currentGuess">Guess: </label>
   <input 
   id="currentGuess" 
